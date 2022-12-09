@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/plantilla2"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    tools:context=".Info">
+
+    <TextView
+        android:id="@+id/textNameInfoProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/design_default_color_on_primary"
+        android:fontFamily="sans-serif-black"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingBottom="15dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgInfoProduct"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:paddingBottom="15dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textDescriptionInfoProduct"
+            android:layout_width="wrap_content"
+            android:textColor="@color/design_default_color_on_primary"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textAlignment="center"
+            android:textSize="35dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textPriceInfoProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/btnInfo"
+            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-black"
+            android:layout_height="wrap_content"
+            android:text="Volver" />
+    </LinearLayout>
+
+</LinearLayout>
