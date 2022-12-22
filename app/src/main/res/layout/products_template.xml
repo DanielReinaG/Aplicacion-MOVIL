@@ -3,53 +3,96 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/imgProductTemplate"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_width="390dp"
+        android:layout_height="180dp"
+        android:gravity="center"
+        android:background="@drawable/border_3"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textNameProductTemplate"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="22dp"
-            android:layout_weight="1"
-            android:text="TextView" />
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textDescriptionProductTemplate"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:fontFamily="sans-serif-black"
-            android:textColor="@color/design_default_color_on_primary"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgProductTemplate"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/nueva_imagen"
+                    />
 
-        <TextView
-            android:id="@+id/textPriceProductTemplate"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:fontFamily="sans-serif-black"
-            android:layout_weight="1"
-            android:text="TextView" />
+                <LinearLayout
+                    android:layout_width="181dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textNameProductTemplate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-black"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textColor="@color/cardview_light_background"
+                        android:textSize="22dp" />
+
+                    <TextView
+                        android:id="@+id/textDescriptionProductTemplate"
+                        android:layout_width="match_parent"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-black"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textColor="@color/design_default_color_on_primary"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/textPriceProductTemplate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-black"
+                        android:text="TextView"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonEliminarProduct_template"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/eliminar"
+                            android:textColor="#CD9944"
+                            app:iconTint="#CD9944" />
+
+                        <Button
+                            android:id="@+id/buttonActualizarProduct_template"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/actualizar" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
     </LinearLayout>
 </LinearLayout>

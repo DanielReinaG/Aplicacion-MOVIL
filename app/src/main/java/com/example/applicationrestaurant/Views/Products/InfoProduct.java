@@ -1,4 +1,4 @@
-package com.example.applicationrestaurant;
+package com.example.applicationrestaurant.Views.Products;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,34 +7,51 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class Info extends AppCompatActivity {
-    private ImageView imgInfoProduct;
+import com.bumptech.glide.Glide;
+import com.example.applicationrestaurant.R;
+import com.example.applicationrestaurant.Servicios.ComidaService;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class InfoProduct extends AppCompatActivity {
+    private ComidaService comidaService;
+    private LinearLayout LinearInfo;
+    private CircleImageView imgInfoProduct;
+
     private TextView textNameInfoProduct, textDescriptionInfoProduct, textPriceInfoProduct;
-    private Button btnInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        imgInfoProduct = (ImageView) findViewById(R.id.imgInfoProduct);
+        LinearInfo = (LinearLayout) findViewById(R.id.LinearInfo);
+        imgInfoProduct = (CircleImageView) findViewById(R.id.imgInfoProduct);
+
         textNameInfoProduct = (TextView) findViewById(R.id.textNameInfoProduct);
         textDescriptionInfoProduct = (TextView) findViewById(R.id.textDescriptionInfoProduct);
         textPriceInfoProduct = (TextView) findViewById(R.id.textPriceInfoProduct);
-        btnInfo = (Button) findViewById(R.id.btnInfo);
 
+
+        //ENVIA LA INFORMACION Y DEBE RECIBIRSE EN EL ADAPTER
         Intent intent = getIntent();
         textNameInfoProduct.setText(intent.getStringExtra("name"));
         textDescriptionInfoProduct.setText(intent.getStringExtra("description"));
         textPriceInfoProduct.setText(String.valueOf(intent.getIntExtra("price",0)));
-        imgInfoProduct.setImageResource(intent.getIntExtra("image", 0));
 
-        btnInfo.setOnClickListener(new View.OnClickListener() {
+        Glide.with(this)
+                .load(intent.getStringExtra("image"))
+                .override(500, 500)
+                .into(imgInfoProduct);
+
+        LinearInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ListProducts.class);
+                Intent intent = new Intent(getApplicationContext(), ListComida.class);
                 startActivity(intent);
             }
         });

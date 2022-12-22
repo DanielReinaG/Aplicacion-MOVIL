@@ -4,63 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/plantilla2"
+    android:background="@color/black"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".Info">
+    tools:context=".Views.Products.InfoProduct">
 
-    <TextView
-        android:id="@+id/textNameInfoProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/design_default_color_on_primary"
-        android:fontFamily="sans-serif-black"
-        android:textAlignment="center"
-        android:textSize="40dp"
-        android:text="TextView" />
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_height="560dp"
+            android:gravity="center"
+            android:background="@drawable/border_3"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:paddingBottom="15dp"
-        android:orientation="vertical">
+            <TextView
+                android:id="@+id/textNameInfoProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="13dp"
+                android:text="TextView"
+                android:textAlignment="center"
+                android:textColor="@color/design_default_color_on_primary"
+                android:textSize="30dp" />
 
-        <ImageView
-            android:id="@+id/imgInfoProduct"
-            android:layout_width="320dp"
-            android:layout_height="320dp"
-            android:paddingBottom="15dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="26dp">
 
-        <TextView
-            android:id="@+id/textDescriptionInfoProduct"
-            android:layout_width="wrap_content"
-            android:textColor="@color/design_default_color_on_primary"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:textAlignment="center"
-            android:textSize="35dp"
-            android:text="TextView" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgInfoProduct"
+                    android:layout_width="270dp"
+                    android:layout_height="270dp"
+                    android:layout_marginBottom="14dp"
+                    android:src="@color/white" />
 
-        <TextView
-            android:id="@+id/textPriceInfoProduct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:fontFamily="sans-serif-black"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/textDescriptionInfoProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:layout_marginBottom="12dp"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="@color/design_default_color_on_primary"
+                    android:textSize="25dp" />
 
-        <Button
-            android:id="@+id/btnInfo"
-            android:layout_width="wrap_content"
-            android:textSize="20dp"
-            android:fontFamily="sans-serif-black"
-            android:layout_height="wrap_content"
-            android:text="Volver" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/textPriceInfoProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:layout_marginBottom="12dp"
+                    android:text="TextView"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="23dp" />
+
+                <LinearLayout
+                    android:id="@+id/LinearInfo"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_3"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnInfo"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/volver" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:textAlignment="center"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="20dp"
+                        android:text="VOLVER"
+                        android:textColor="@color/dorado" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
 </LinearLayout>

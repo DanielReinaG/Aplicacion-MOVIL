@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".Views.Crear_Product">
+
+    <ScrollView
+        android:layout_width="370dp"
+        android:layout_height="580dp"
+        android:layout_gravity="center"
+        android:background="@drawable/border_3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:layout_marginBottom="10dp"
+                android:text="NUEVO PRODUCTO"
+                android:textColor="@color/design_default_color_on_primary"
+                android:textSize="32dp" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgFormCreate"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/nueva_imagen"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/border_3"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textNameFormCreate"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="Nombre"
+                    android:textColor="@color/design_default_color_on_primary"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/editNameFormCreate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:textColor="@color/design_default_color_on_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/border_3"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textDescriptFormCreate"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="Descripción"
+                    android:textColor="@color/design_default_color_on_primary"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/editDescriptFormCreate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:textColor="@color/design_default_color_on_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/border_3"
+                android:orientation="horizontal"
+                android:paddingLeft="10dp">
+
+                <TextView
+                    android:id="@+id/textPriceFormCreate"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="Precio"
+                    android:textColor="@color/design_default_color_on_primary"
+                    android:textSize="25dp" />
+
+                <EditText
+                    android:id="@+id/editPriceFormCreate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:textColor="@color/design_default_color_on_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textFormCreate"
+                    android:layout_width="wrap_content"
+                    android:padding="11dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_3"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/dorado"
+                    android:layout_marginRight="20dp"
+                    android:text="AGREGAR"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/textFormCancel"
+                    android:layout_width="wrap_content"
+                    android:padding="11dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_3"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/dorado"
+                    android:text="CANCELAR"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
