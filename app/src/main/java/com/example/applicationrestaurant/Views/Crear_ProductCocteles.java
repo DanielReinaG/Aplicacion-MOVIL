@@ -1,54 +1,41 @@
 package com.example.applicationrestaurant.Views;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
 import com.example.applicationrestaurant.DB.DBFirebase;
-import com.example.applicationrestaurant.Entities.Comida;
+import com.example.applicationrestaurant.Entities.Cocteles;
 import com.example.applicationrestaurant.R;
-import com.example.applicationrestaurant.Servicios.ComidaService;
-import com.example.applicationrestaurant.Views.Products.ListComida;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.applicationrestaurant.Servicios.CoctelesService;
+import com.example.applicationrestaurant.Views.Products.ListCocteles;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.osmdroid.views.MapView;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-
-public class Crear_Product extends AppCompatActivity {
-    //BUTTON YA ESTA
+public class Crear_ProductCocteles extends AppCompatActivity {
     private EditText editNameFormCreate, editDescriptFormCreate,editPriceFormCreate;
     private TextView textNameFormCreate,textDescriptFormCreate,textPriceFormCreate,textFormCreate,textFormCancel;
     private ImageView imgFormCreate;
     private DBFirebase dbFirebase;
     private ActivityResultLauncher<String> content;
-    private ComidaService comidaService;
-    private MapView mapView;
+    private CoctelesService coctelesService;
     private String urlImage;
     private StorageReference storageReference;
 
@@ -56,9 +43,8 @@ public class Crear_Product extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crear_product);
+        setContentView(R.layout.activity_crear_product_cocteles);
 
-        //LLAMAR BOTONES
         urlImage = "";
         textFormCreate = (TextView) findViewById(R.id.textFormCreate);
         textFormCancel = (TextView) findViewById(R.id.textFormCancel);
@@ -70,11 +56,10 @@ public class Crear_Product extends AppCompatActivity {
         editPriceFormCreate = (EditText) findViewById(R.id.editPriceFormCreate);
         imgFormCreate = (ImageView) findViewById(R.id.imgFormCreate);
 
-        //EVENTO DE SELECCIONAR IMAGEN DE LA CARPETA DE ARCHIVOS
-        //AQUI GUARDA LA IMAGEN CARGADA AL STORAGE DE FIREBASE
+
         try {
             dbFirebase = new DBFirebase();
-            comidaService = new ComidaService();
+            coctelesService = new CoctelesService();
             storageReference = FirebaseStorage.getInstance().getReference();
             content = registerForActivityResult(
                     new ActivityResultContracts.GetContent(),
@@ -83,19 +68,19 @@ public class Crear_Product extends AppCompatActivity {
                         @Override
                         public void onActivityResult(Uri result) {
                             Uri uri = result;
-                            StorageReference filePath = storageReference.child("images").child(uri.getLastPathSegment());
+                            StorageReference filePath = storageReference.child("imagesCocteles").child(uri.getLastPathSegment());
                             filePath.putFile(uri)
                                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                         @Override
                                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            Toast.makeText(getApplicationContext(),"Imagen cargada", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), "Imagen cargada", Toast.LENGTH_SHORT).show();
                                             filePath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                                 @Override
                                                 public void onSuccess(Uri uri) {
                                                     Uri dowloadUrl = uri;
                                                     urlImage = dowloadUrl.toString();
-                                                    Glide.with(Crear_Product.this).load(dowloadUrl)
-                                                            .override(500,500)
+                                                    Glide.with(Crear_ProductCocteles.this).load(dowloadUrl)
+                                                            .override(500, 500)
                                                             .into(imgFormCreate);
                                                 }
                                             });
@@ -103,12 +88,12 @@ public class Crear_Product extends AppCompatActivity {
                                     });
                         }
                     });
-            }catch (Exception e) {
+        }catch (Exception e) {
             Log.e("DB", e.toString());
         }
 
         Intent intentIN = getIntent();
-        if(intentIN.getBooleanExtra("edit", false)){
+        if(intentIN.getBooleanExtra("editC", false)){
             editNameFormCreate.setText(intentIN.getStringExtra("name"));
             editDescriptFormCreate.setText(intentIN.getStringExtra("description"));
             editPriceFormCreate.setText(String.valueOf(intentIN.getIntExtra("price", 0)));
@@ -119,12 +104,10 @@ public class Crear_Product extends AppCompatActivity {
                     .into(imgFormCreate);
         }
 
-        //AL OPRIMIR EL BOTON TEXTFORMCREATE CREA UN NUEVO PRODUCTO EN LA TABLA FOOD
-        //AQUI CREA EL PRODUCTO
         textFormCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Comida comida = new Comida(
+                Cocteles cocteles = new Cocteles(
                         //OBTIENE LO ESCRITO EN LOS EDITS Y LOS CONVIERTE A STRING
                         editNameFormCreate.getText().toString(),
                         editDescriptFormCreate.getText().toString(),
@@ -132,18 +115,18 @@ public class Crear_Product extends AppCompatActivity {
                         urlImage
                 );
                 //SI VIENE POR EDIT ACTUALIZA EL PRODUCTO
-                if(intentIN.getBooleanExtra("edit", false)) {
+                if(intentIN.getBooleanExtra("editC", false)) {
                     String id = intentIN.getStringExtra("id");
-                    comida.setId(id);
-                    dbFirebase.updateDataComida(comida);
+                    cocteles.setId(id);
+                    dbFirebase.updateDataCocteles(cocteles);
                     //SINO, CREA EL PRODUCTO EN LA BD
 
                 }else{
-                    dbFirebase.insertDataComida(comida);
+                    dbFirebase.insertDataCocteles(cocteles);
                 }
 
                 //CUANDO CREA EL PRODUCTO LO DEVUELVE A LA PAGINA INTERIR
-                Intent intent = new Intent(getApplicationContext(), ListComida.class);
+                Intent intent = new Intent(getApplicationContext(), ListCocteles.class);
                 startActivity(intent);
             }
         });
@@ -151,7 +134,7 @@ public class Crear_Product extends AppCompatActivity {
         textFormCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ListComida.class);
+                Intent intent = new Intent(getApplicationContext(), ListCocteles.class);
                 startActivity(intent);
             }
         });
@@ -162,9 +145,7 @@ public class Crear_Product extends AppCompatActivity {
                 content.launch("image/*");
             }
         });
-
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Aqui se enlaza el menu que se creo
@@ -176,6 +157,7 @@ public class Crear_Product extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()){
+
             case R.id.Menu:
                 intent = new Intent(getApplicationContext(), InicioMenu.class);
                 startActivity(intent);
@@ -183,11 +165,10 @@ public class Crear_Product extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-        public void clean(){
-            editNameFormCreate.setText("");
-            editDescriptFormCreate.setText("");
-            editPriceFormCreate.setText("");
-            imgFormCreate.setImageResource(R.drawable.ic_launcher_background);
-        }
-
+    public void clean(){
+        editNameFormCreate.setText("");
+        editDescriptFormCreate.setText("");
+        editPriceFormCreate.setText("");
+        imgFormCreate.setImageResource(R.drawable.ic_launcher_background);
     }
+}

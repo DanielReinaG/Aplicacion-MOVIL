@@ -12,5 +12,6 @@
     <string name="cocteles">
         <br><br><br><b><b>COCTELES</b></b></br></br></br>
     </string>
+    <string name="title_activity_map_google">MapGoogle</string>
 
 </resources>

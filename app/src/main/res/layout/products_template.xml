@@ -82,7 +82,6 @@
                             android:layout_height="30dp"
                             android:layout_marginRight="20dp"
                             android:background="@drawable/eliminar"
-                            android:textColor="#CD9944"
                             app:iconTint="#CD9944" />
 
                         <Button

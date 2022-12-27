@@ -7,11 +7,11 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".Views.Crear_Product">
+    tools:context=".Views.CrearProductCerveza">
 
     <ScrollView
         android:layout_width="370dp"
-        android:layout_height="580dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/border_3">
 
@@ -33,13 +33,6 @@
                 android:textSize="32dp" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgFormCreate"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
-                android:src="@drawable/nueva_imagen"
-                />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,8 +43,8 @@
                 android:paddingLeft="10dp">
 
                 <TextView
-                    android:id="@+id/textNameFormCreate"
-                    android:layout_width="110dp"
+                    android:id="@+id/textNameFormCreateCerveza"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:text="Nombre"
@@ -59,7 +52,7 @@
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/editNameFormCreate"
+                    android:id="@+id/editNameFormCreateCerveza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -77,16 +70,16 @@
                 android:paddingLeft="10dp">
 
                 <TextView
-                    android:id="@+id/textDescriptFormCreate"
-                    android:layout_width="110dp"
+                    android:id="@+id/textContentAlcoholFormCreateCerveza"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:text="Descripción"
+                    android:text="Alcohol"
                     android:textColor="@color/design_default_color_on_primary"
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/editDescriptFormCreate"
+                    android:id="@+id/editContentAlcoholFormCreateCerveza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -104,8 +97,8 @@
                 android:paddingLeft="10dp">
 
                 <TextView
-                    android:id="@+id/textPriceFormCreate"
-                    android:layout_width="110dp"
+                    android:id="@+id/textPriceFormCreateCerveza"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
                     android:text="Precio"
@@ -113,7 +106,7 @@
                     android:textSize="20dp" />
 
                 <EditText
-                    android:id="@+id/editPriceFormCreate"
+                    android:id="@+id/editPriceFormCreateCerveza"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -128,7 +121,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textFormCreate"
+                    android:id="@+id/textFormCreateCerveza"
                     android:layout_width="wrap_content"
                     android:padding="11dp"
                     android:layout_height="wrap_content"
@@ -137,10 +130,10 @@
                     android:textColor="@color/dorado"
                     android:layout_marginRight="20dp"
                     android:text="AGREGAR"
-                    android:textSize="18dp" />
+                    android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/textFormCancel"
+                    android:id="@+id/textFormCancelCerveza"
                     android:layout_width="wrap_content"
                     android:padding="11dp"
                     android:layout_height="wrap_content"
@@ -148,7 +141,7 @@
                     android:fontFamily="sans-serif-black"
                     android:textColor="@color/dorado"
                     android:text="CANCELAR"
-                    android:textSize="18dp" />
+                    android:textSize="20dp" />
 
             </LinearLayout>
         </LinearLayout>

@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Comida;
 import com.example.applicationrestaurant.Views.Crear_Product;
-import com.example.applicationrestaurant.Views.Products.InfoProduct;
+import com.example.applicationrestaurant.Views.Products.InfoComida;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Views.Products.ListComida;
 
@@ -50,7 +51,6 @@ public class ComidaAdapter extends BaseAdapter {
         view = layoutInflater.inflate(R.layout.products_template,null);
 
         Comida comida = arrayComida.get(i);
-
         ImageView imgProductTemplate = (ImageView) view.findViewById(R.id.imgProductTemplate);
         TextView textNameProductTemplate = (TextView) view.findViewById(R.id.textNameProductTemplate);
         TextView textDescriptionProductTemplate = (TextView) view.findViewById(R.id.textDescriptionProductTemplate);
@@ -58,7 +58,6 @@ public class ComidaAdapter extends BaseAdapter {
         Button buttonEliminarProduct_template = (Button)view.findViewById(R.id.buttonEliminarProduct_template);
         Button buttonActualizarProduct_template = (Button)view.findViewById(R.id.buttonActualizarProduct_template);
 
-        //imgProductTemplate.setImageResource(R.drawable.logoburgues);
         textNameProductTemplate.setText(comida.getName());
         textDescriptionProductTemplate.setText(comida.getDescription());
         textPriceProductTemplate.setText(String.valueOf(comida.getPrice()));
@@ -71,7 +70,7 @@ public class ComidaAdapter extends BaseAdapter {
         imgProductTemplate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context.getApplicationContext(), InfoProduct.class);
+                Intent intent = new Intent(context.getApplicationContext(), InfoComida.class);
                 intent.putExtra("name", comida.getName());
                 intent.putExtra("description", comida.getDescription());
                 intent.putExtra("price", comida.getPrice());
@@ -81,12 +80,11 @@ public class ComidaAdapter extends BaseAdapter {
             }
         });
 
-
         buttonEliminarProduct_template.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DBFirebase dbFirebase = new DBFirebase();
-                dbFirebase.deleteData(comida.getId());
+                dbFirebase.deleteDataComida(comida.getId());
                 Intent intent = new Intent(context.getApplicationContext(), ListComida.class);
                 context.startActivity(intent);
 

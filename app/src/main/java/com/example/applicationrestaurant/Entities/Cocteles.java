@@ -2,15 +2,14 @@ package com.example.applicationrestaurant.Entities;
 
 import java.util.UUID;
 
-public class Comida {
+public class Cocteles {
     private String id;
     private String name;
     private String description;
     private int price;
     private String image;
 
-
-    public Comida(String id, String name, String description, int price, String image) {
+    public Cocteles(String id, String name, String description, int price, String image) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -19,7 +18,7 @@ public class Comida {
 
     }
 
-    public Comida(String name, String description, int price, String image) {
+    public Cocteles(String name, String description, int price, String image) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
@@ -27,12 +26,12 @@ public class Comida {
         this.image = image;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -58,6 +57,7 @@ public class Comida {
     public void setPrice(int price) {
         this.price = price;
     }
+
     public String getImage() {
         return image;
     }

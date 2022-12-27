@@ -16,6 +16,7 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapController;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 
 public class Map extends AppCompatActivity {
     private MapView map;
@@ -25,17 +26,21 @@ public class Map extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        map = (MapView) findViewById(R.id.mapView);
-
         Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
+
+        GeoPoint villavicencio = new GeoPoint(4.13961, -73.63572);
+        map = (MapView) findViewById(R.id.mapView);
+        map.setBuiltInZoomControls(true);
         mapController = (MapController) map.getController();
-
-        GeoPoint colombia = new GeoPoint(4.570868, -74.297333);
-
-        mapController.setCenter(colombia);
-        mapController.setZoom(10);
+        mapController.setCenter(villavicencio);
+        mapController.setZoom(17);
         map.setMultiTouchControls(true);
+
+        Marker marker = new Marker(map);
+        marker.setPosition(villavicencio);
+        map.getOverlays().add(marker);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Aqui se enlaza el menu que se creo
@@ -47,16 +52,10 @@ public class Map extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent intent;
         switch (item.getItemId()){
-            case R.id.itemMap:
-                intent = new Intent(getApplicationContext(), Map.class);
+
+            case R.id.Menu:
+                intent = new Intent(getApplicationContext(), InicioMenu.class);
                 startActivity(intent);
-            case R.id.itemComida:
-                intent = new Intent(getApplicationContext(), ListComida.class);
-                startActivity(intent);
-            case R.id.itemCoctel:
-                return true;
-            case R.id.itemCerveza:
-                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

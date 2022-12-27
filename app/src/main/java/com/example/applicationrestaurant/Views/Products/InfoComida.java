@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,22 +14,20 @@ import com.example.applicationrestaurant.Servicios.ComidaService;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class InfoProduct extends AppCompatActivity {
+public class InfoComida extends AppCompatActivity {
     private ComidaService comidaService;
     private LinearLayout LinearInfo;
     private CircleImageView imgInfoProduct;
-
     private TextView textNameInfoProduct, textDescriptionInfoProduct, textPriceInfoProduct;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_info_comida);
 
         LinearInfo = (LinearLayout) findViewById(R.id.LinearInfo);
         imgInfoProduct = (CircleImageView) findViewById(R.id.imgInfoProduct);
-
         textNameInfoProduct = (TextView) findViewById(R.id.textNameInfoProduct);
         textDescriptionInfoProduct = (TextView) findViewById(R.id.textDescriptionInfoProduct);
         textPriceInfoProduct = (TextView) findViewById(R.id.textPriceInfoProduct);
