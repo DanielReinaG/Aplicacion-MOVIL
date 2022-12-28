@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
 import com.example.applicationrestaurant.DB.DBFirebase;
@@ -25,6 +28,11 @@ import java.util.ArrayList;
 public class CoctelesAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Cocteles>  arrayCocteles;
+
+    public void setFilteredListCoc(ArrayList<Cocteles> filteredList){
+        this.arrayCocteles = filteredList;
+        notifyDataSetChanged();
+    }
 
     public CoctelesAdapter(Context context, ArrayList<Cocteles> arrayCocteles) {
         this.context = context;
@@ -61,6 +69,7 @@ public class CoctelesAdapter extends BaseAdapter {
         TextView textPriceProductTemplate = (TextView) view.findViewById(R.id.textPriceProductTemplate);
         Button buttonEliminarProduct_template = (Button) view.findViewById(R.id.buttonEliminarProduct_template);
         Button buttonActualizarProduct_template = (Button) view.findViewById(R.id.buttonActualizarProduct_template);
+        CardView cardView = (CardView) view.findViewById(R.id.cardView);
 
         //AQUI SE TRAE LA INFORMACION DESDE LA BASE DE DATOS A LAS CAJITAS
         textNameProductTemplate.setText(cocteles.getName());
@@ -73,6 +82,9 @@ public class CoctelesAdapter extends BaseAdapter {
                 .load(cocteles.getImage())
                 .override(500,500)
                 .into(imgProductTemplate);
+
+        //ANIMACION DE LOS CARD VIEW
+        cardView.startAnimation(AnimationUtils.loadAnimation(this.context,R.anim.anim_one));
 
         imgProductTemplate.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.applicationrestaurant.R;
+import com.example.applicationrestaurant.Views.Map;
 import com.example.applicationrestaurant.Views.Products.ListCervezas;
 import com.example.applicationrestaurant.Views.Products.ListCocteles;
 import com.example.applicationrestaurant.Views.Products.ListComida;

@@ -23,6 +23,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <SearchView
+            android:id="@+id/searchViewBuscar"
+            android:layout_width="390dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_view"
+            android:theme="@style/ThemeOverlay.SearchView"
+            android:queryHint="Busque aqui..."
+            android:searchIcon="@drawable/buscar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">

@@ -5,16 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.example.applicationrestaurant.Adapter.ComidaAdapter;
 import com.example.applicationrestaurant.DB.DBFirebase;
@@ -23,39 +22,49 @@ import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.ComidaService;
 import com.example.applicationrestaurant.Views.Crear_Product;
 import com.example.applicationrestaurant.Views.InicioMenu;
-import com.example.applicationrestaurant.Views.Map;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
 public class ListComida extends AppCompatActivity{
-    private SearchView txtBuscar;
-    private DBFirebase dbFirebase;
-    private EditText searchViewBuscar;
-    private ComidaService comidaService;
+
     private ListView listViewComida;
-    private ComidaAdapter comidaAdapter;
-    private ArrayAdapter<String> adapter;
     private ArrayList<Comida> arrayComida;
-    private FloatingActionButton btnAgregarListComida;
+    private ComidaAdapter comidaAdapter;
+    private SearchView searchViewBuscar;
+
+    private DBFirebase dbFirebase;
+    private ComidaService comidaService;
+    private TextView btnAgregarListComida;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_comida);
+
         arrayComida = new ArrayList<>();
         //Evento al dar clic al BOTON +
-        btnAgregarListComida = (FloatingActionButton) findViewById(R.id.btnAgregarListComida);
-
+        btnAgregarListComida = (TextView) findViewById(R.id.btnAgregarListComida);
         listViewComida = (ListView) findViewById(R.id.listViewComida);
-        searchViewBuscar = (EditText) findViewById(R.id.searchViewBuscar);
+        searchViewBuscar = (SearchView) findViewById(R.id.searchViewBuscar);
 
-        //adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayComida);
-        //listViewComida.setAdapter(adapter);
+        //
+        searchViewBuscar.clearFocus();
+        searchViewBuscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-        //searchViewBuscar.addTextChangedListener(new TextWatcher() {
-
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
+        //
         try{
             dbFirebase = new DBFirebase();
             comidaService = new ComidaService();
@@ -65,11 +74,12 @@ public class ListComida extends AppCompatActivity{
 
         comidaAdapter = new ComidaAdapter(this, arrayComida);
         listViewComida.setAdapter(comidaAdapter);
+
+
         //MUESTRA LOS DATOS CON GETDATA(OBTENER INFORMACION) DE LA BD
         dbFirebase.getDataComida(comidaAdapter, arrayComida);
 
         //AGREGA EL MENU CREADO
-
         btnAgregarListComida.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,10 +88,22 @@ public class ListComida extends AppCompatActivity{
             }
         });
 
-
-
-        //this.txtBuscar.setOnQueryTextListener(this);
     }
+
+    private void filterList(String text) {
+        ArrayList<Comida> filteredList = new ArrayList<>();
+        for (Comida comida :arrayComida){
+            if(comida.getName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(comida);
+            }
+        }
+        if(filteredList.isEmpty()){Toast.makeText(this,"No existe registro", Toast.LENGTH_SHORT).show();
+        }else{
+            comidaAdapter.setFilteredList(filteredList);
+
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

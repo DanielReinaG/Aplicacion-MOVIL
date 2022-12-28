@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.applicationrestaurant.R;
-import com.example.applicationrestaurant.Views.Products.ListComida;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.util.GeoPoint;

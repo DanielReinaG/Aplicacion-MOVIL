@@ -13,10 +13,11 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:navigationBarColor">@color/dorado</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:actionMenuTextColor">@color/black</item>
         <item name="title">El Burgues Pub</item>
     </style>
+
     <style name="Theme.ApplicationRestaurant.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -24,4 +25,9 @@
     <style name="Theme.ApplicationRestaurant.AppBarOverlay"
         parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.ApplicationRestaurant.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <style name="ThemeOverlay.SearchView" parent="">
+       <item name="android:editTextColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
 </resources>

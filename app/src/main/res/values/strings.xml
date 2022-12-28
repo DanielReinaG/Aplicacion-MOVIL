@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">ApplicationRestaurant</string>
+    <string name="app_name">El Burgues Pub</string>
+    <string name="desarrollador">Desarrollador: Daniel Reina</string>
+
+
     <string name="open_drawer">Open</string>
     <string name="close_drawer">Close</string>
     <string name="title_activity_barra_navegation">BarraNavegation</string>
@@ -13,5 +16,6 @@
         <br><br><br><b><b>COCTELES</b></b></br></br></br>
     </string>
     <string name="title_activity_map_google">MapGoogle</string>
+
 
 </resources>

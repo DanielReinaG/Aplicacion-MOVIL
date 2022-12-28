@@ -1,10 +1,10 @@
 package com.example.applicationrestaurant.Views;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applicationrestaurant.R;
-import com.example.applicationrestaurant.Views.Products.ListComida;
 
 public class Inicio extends AppCompatActivity{
     private TextView textHome;
@@ -26,13 +25,15 @@ public class Inicio extends AppCompatActivity{
         textHome = (TextView) findViewById(R.id.textHome);
         rotarImagen(logoImage);
 
-        textHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent (getApplicationContext(), InicioMenu.class);
-                startActivity(intent);
-            }
-        });
+        final int DURACION = 2700;
+
+        new Handler().postDelayed(()->{
+            //CODIGO QUE SE EJECUTARA
+            Intent intent = new Intent(getApplicationContext(), InicioMenu.class);
+            startActivity(intent);
+            finish();
+        },DURACION);
+
     }
     //ANIMACION DE HACER ROTAR LA IMAGEN
     private void rotarImagen(View view){

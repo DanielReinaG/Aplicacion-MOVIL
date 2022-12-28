@@ -7,15 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,18 +24,12 @@ import com.example.applicationrestaurant.Entities.Comida;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.ComidaService;
 import com.example.applicationrestaurant.Views.Products.ListComida;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import org.osmdroid.views.MapView;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 public class Crear_Product extends AppCompatActivity {
     //BUTTON YA ESTA

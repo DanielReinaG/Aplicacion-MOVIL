@@ -9,6 +9,8 @@ public class Comida {
     private int price;
     private String image;
 
+    public Comida() {
+    }
 
     public Comida(String id, String name, String description, int price, String image) {
         this.id = id;

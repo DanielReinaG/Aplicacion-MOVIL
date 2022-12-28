@@ -12,15 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Cervezas;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.CervezaService;
 import com.example.applicationrestaurant.Views.Products.ListCervezas;
-
-import org.w3c.dom.Text;
 
 public class CrearProductCerveza extends AppCompatActivity {
     private EditText editNameFormCreateCerveza,editContentAlcoholFormCreateCerveza,editPriceFormCreateCerveza;
