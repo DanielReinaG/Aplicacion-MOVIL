@@ -20,97 +20,126 @@
         android:theme="@style/Theme.ApplicationRestaurant"
         tools:targetApi="31">
         <activity
-            android:name=".Views.CrearProductCerveza"
+            android:name=".Views.ADMIN.VISTAS.InicioBienvenidaAdmin"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Products.ListCervezas"
+            android:name=".Views.USER.Cervezas"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Crear_ProductCocteles"
+            android:name=".Views.USER.Cocteles"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Products.InfoCocteles"
+            android:name=".Views.USER.Comida"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Products.ListCocteles"
+            android:name=".Views.ADMIN.VISTAS.InicioPrincipal"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Map"
+            android:name=".Views.ADMIN.VISTAS.CrearProductCerveza"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Register"
+            android:name=".Views.ADMIN.Products.ListCervezas"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.InicioMenu"
+            android:name=".Views.ADMIN.VISTAS.Crear_ProductCocteles"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Login"
+            android:name=".Views.ADMIN.Products.InfoCocteles"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Crear_Product"
+            android:name=".Views.ADMIN.Products.ListCocteles"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Products.InfoComida"
+            android:name=".Views.USER.Map"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Products.ListComida"
+            android:name=".Views.USER.Register"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Views.Inicio"
+            android:name=".Views.USER.Login"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Views.ADMIN.VISTAS.Crear_Product"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Views.ADMIN.Products.InfoComida"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Views.ADMIN.Products.ListComida"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Views.USER.Inicio"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

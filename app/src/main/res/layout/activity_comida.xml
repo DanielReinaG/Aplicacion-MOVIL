@@ -7,8 +7,8 @@
     android:background="@color/black"
     android:gravity="center"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    tools:context=".Views.ADMIN.Products.ListComida">
+    tools:context=".Views.USER.Comida"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
@@ -39,13 +39,6 @@
 
             android:searchIcon="@drawable/buscar" />
 
-        <TextView
-            android:id="@+id/btnAgregarListComida"
-            android:layout_marginLeft="5dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/agregar"/>
-
     </LinearLayout>
 
     <LinearLayout
@@ -69,7 +62,8 @@
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_menu_admin">
+        app:menu="@menu/bottom_menu">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </LinearLayout>

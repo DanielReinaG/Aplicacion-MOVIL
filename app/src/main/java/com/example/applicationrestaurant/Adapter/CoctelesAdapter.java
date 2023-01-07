@@ -17,11 +17,9 @@ import com.bumptech.glide.Glide;
 import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Cocteles;
 import com.example.applicationrestaurant.R;
-import com.example.applicationrestaurant.Views.Crear_Product;
-import com.example.applicationrestaurant.Views.Crear_ProductCocteles;
-import com.example.applicationrestaurant.Views.Products.InfoCocteles;
-import com.example.applicationrestaurant.Views.Products.InfoComida;
-import com.example.applicationrestaurant.Views.Products.ListCocteles;
+import com.example.applicationrestaurant.Views.ADMIN.VISTAS.Crear_ProductCocteles;
+import com.example.applicationrestaurant.Views.ADMIN.Products.InfoCocteles;
+import com.example.applicationrestaurant.Views.ADMIN.Products.ListCocteles;
 
 import java.util.ArrayList;
 
@@ -85,19 +83,6 @@ public class CoctelesAdapter extends BaseAdapter {
 
         //ANIMACION DE LOS CARD VIEW
         cardView.startAnimation(AnimationUtils.loadAnimation(this.context,R.anim.anim_one));
-
-        imgProductTemplate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context.getApplicationContext(), InfoCocteles.class);
-                intent.putExtra("name", cocteles.getName());
-                intent.putExtra("description", cocteles.getDescription());
-                intent.putExtra("price", cocteles.getPrice());
-                intent.putExtra("image", cocteles.getImage());
-                intent.putExtra("id", cocteles.getId());
-                context.startActivity(intent);
-            }
-        });
 
         //EVENTO AL PRESIONAR EL BOTON ELIMINAR
         buttonEliminarProduct_template.setOnClickListener(new View.OnClickListener() {

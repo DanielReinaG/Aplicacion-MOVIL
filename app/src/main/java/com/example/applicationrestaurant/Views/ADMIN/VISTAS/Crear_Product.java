@@ -1,4 +1,4 @@
-package com.example.applicationrestaurant.Views;
+package com.example.applicationrestaurant.Views.ADMIN.VISTAS;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -23,7 +23,7 @@ import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Comida;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.ComidaService;
-import com.example.applicationrestaurant.Views.Products.ListComida;
+import com.example.applicationrestaurant.Views.ADMIN.Products.ListComida;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -122,21 +122,21 @@ public class Crear_Product extends AppCompatActivity {
                         Integer.parseInt(editPriceFormCreate.getText().toString()),
                         urlImage
                 );
-                //SI VIENE POR EDIT ACTUALIZA EL PRODUCTO
-                if(intentIN.getBooleanExtra("edit", false)) {
-                    String id = intentIN.getStringExtra("id");
-                    comida.setId(id);
-                    dbFirebase.updateDataComida(comida);
-                    //SINO, CREA EL PRODUCTO EN LA BD
-
-                }else{
-                    dbFirebase.insertDataComida(comida);
+                    //SI VIENE POR EDIT ACTUALIZA EL PRODUCTO
+                    if(intentIN.getBooleanExtra("edit", false)) {
+                        String image = intentIN.getStringExtra("image");
+                        String id = intentIN.getStringExtra("id");
+                        comida.setId(id);
+                        comida.setImage(image);
+                        dbFirebase.updateDataComida(comida);
+                        //SINO, CREA EL PRODUCTO EN LA BD
+                    }else{
+                        dbFirebase.insertDataComida(comida);
+                    }
+                    //CUANDO CREA EL PRODUCTO LO DEVUELVE A LA PAGINA INTERIR
+                    Intent intent = new Intent(getApplicationContext(), ListComida.class);
+                    startActivity(intent);
                 }
-
-                //CUANDO CREA EL PRODUCTO LO DEVUELVE A LA PAGINA INTERIR
-                Intent intent = new Intent(getApplicationContext(), ListComida.class);
-                startActivity(intent);
-            }
         });
 
         textFormCancel.setOnClickListener(new View.OnClickListener() {
@@ -156,24 +156,6 @@ public class Crear_Product extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //Aqui se enlaza el menu que se creo
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()){
-            case R.id.Menu:
-                intent = new Intent(getApplicationContext(), InicioMenu.class);
-                startActivity(intent);
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
         public void clean(){
             editNameFormCreate.setText("");
             editDescriptFormCreate.setText("");

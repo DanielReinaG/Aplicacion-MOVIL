@@ -1,12 +1,8 @@
-package com.example.applicationrestaurant.Views.Products;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.applicationrestaurant.Views.ADMIN.Products;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -14,30 +10,28 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.applicationrestaurant.Adapter.ComidaAdapter;
 import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Comida;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.ComidaService;
-import com.example.applicationrestaurant.Views.Crear_Product;
-import com.example.applicationrestaurant.Views.InicioMenu;
+import com.example.applicationrestaurant.Views.ADMIN.VISTAS.Crear_Product;
+import com.example.applicationrestaurant.Views.USER.Register;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 public class ListComida extends AppCompatActivity{
-
     private ListView listViewComida;
     private ArrayList<Comida> arrayComida;
     private ComidaAdapter comidaAdapter;
     private SearchView searchViewBuscar;
-
     private DBFirebase dbFirebase;
     private ComidaService comidaService;
     private TextView btnAgregarListComida;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +43,8 @@ public class ListComida extends AppCompatActivity{
         btnAgregarListComida = (TextView) findViewById(R.id.btnAgregarListComida);
         listViewComida = (ListView) findViewById(R.id.listViewComida);
         searchViewBuscar = (SearchView) findViewById(R.id.searchViewBuscar);
+        BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //
         searchViewBuscar.clearFocus();
@@ -104,24 +100,39 @@ public class ListComida extends AppCompatActivity{
         }
     }
 
+    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.nav_menu:
+                            Intent intent = new Intent(getApplicationContext(), ListComida.class);
+                            startActivity(intent);
+                            return true;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //Aqui se enlaza el menu que se creo
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
+                        case R.id.nav_coctel:
+                            Intent intent2 = new Intent(getApplicationContext(), ListCocteles.class);
+                            startActivity(intent2);
+                            return true;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+                        case R.id.nav_cerveza:
+                            Intent intent3 = new Intent(getApplicationContext(), ListCervezas.class);
+                            startActivity(intent3);
+                            return true;
 
-        switch (item.getItemId()){
-            case R.id.Menu:
-                Intent intent2 = new Intent(getApplicationContext(), InicioMenu.class);
-                startActivity(intent2);
+                        case R.id.nav_login:
+                            Intent intent5 = new Intent(getApplicationContext(), com.example.applicationrestaurant.Views.USER.Comida.class);
+                            startActivity(intent5);
+                            return true;
 
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+                        case R.id.nav_newAdmin:
+                            Intent intent6 = new Intent(getApplicationContext(), Register.class);
+                            startActivity(intent6);
+                            return true;
+
+
+                    }
+                    return false;
+                }
+            };
 }

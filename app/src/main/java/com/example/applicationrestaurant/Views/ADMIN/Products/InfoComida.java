@@ -1,4 +1,4 @@
-package com.example.applicationrestaurant.Views.Products;
+package com.example.applicationrestaurant.Views.ADMIN.Products;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.ComidaService;
+import com.example.applicationrestaurant.Views.USER.Cocteles;
+import com.example.applicationrestaurant.Views.USER.Comida;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,7 +49,7 @@ public class InfoComida extends AppCompatActivity {
         LinearInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ListComida.class);
+                Intent intent = new Intent(getApplicationContext(), Comida.class);
                 startActivity(intent);
             }
         });

@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import com.example.applicationrestaurant.Adapter.CervezaAdapter;
 import com.example.applicationrestaurant.Adapter.CoctelesAdapter;
 import com.example.applicationrestaurant.Adapter.ComidaAdapter;
+import com.example.applicationrestaurant.Adapter.USER.CervezaAdapterUser;
+import com.example.applicationrestaurant.Adapter.USER.CoctelesAdapterUser;
+import com.example.applicationrestaurant.Adapter.USER.ComidaAdapterUser;
 import com.example.applicationrestaurant.Entities.Cervezas;
 import com.example.applicationrestaurant.Entities.Cocteles;
 import com.example.applicationrestaurant.Entities.Comida;
@@ -46,6 +49,33 @@ public class DBFirebase {
 
     //CONSULTAR PRODUCTOS
     public void getDataComida(ComidaAdapter adapter, ArrayList<Comida> list){
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Comida comida = new Comida(
+                                        document.getData().get("id").toString(),
+                                        document.getData().get("name").toString(),
+                                        document.getData().get("description").toString(),
+                                        Integer.parseInt(document.getData().get("price").toString()),
+                                        document.getData().get("image").toString()
+                                );
+                                list.add(comida);
+                            }
+                            //ESTO ACTUALIZA LOS DATOS EN PANTALLA
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void getDataComidaUser(ComidaAdapterUser adapter, ArrayList<Comida> list){
         db.collection("food")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -150,6 +180,33 @@ public class DBFirebase {
                     }
                 });
     }
+
+    public void getDataCoctelesUser(CoctelesAdapterUser adapter, ArrayList<Cocteles> list){
+        db.collection("coctel")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Cocteles cocteles = new Cocteles(
+                                        document.getData().get("id").toString(),
+                                        document.getData().get("name").toString(),
+                                        document.getData().get("description").toString(),
+                                        Integer.parseInt(document.getData().get("price").toString()),
+                                        document.getData().get("image").toString()
+                                );
+                                list.add(cocteles);
+                            }
+                            //ESTO ACTUALIZA LOS DATOS EN PANTALLA
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
     //DELETE
     public void deleteDataCocteles(String id){
         db.collection("coctel").whereEqualTo("id", id)
@@ -228,6 +285,33 @@ public class DBFirebase {
                     }
                 });
     }
+    public void getDataCervezaUser(CervezaAdapterUser adapter, ArrayList<Cervezas> list){
+        db.collection("cerveza")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Cervezas cervezas = new Cervezas(
+                                        document.getData().get("id").toString(),
+                                        document.getData().get("name").toString(),
+                                        document.getData().get("contentAlcohol").toString(),
+                                        Integer.parseInt(document.getData().get("price").toString())
+
+                                );
+                                list.add(cervezas);
+                            }
+                            //ESTO ACTUALIZA LOS DATOS EN PANTALLA
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
+
     //DELETE
     public void deleteDataCerveza(String id){
         db.collection("cerveza").whereEqualTo("id", id)

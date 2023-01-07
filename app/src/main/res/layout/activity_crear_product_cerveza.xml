@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/black"
-    tools:context=".Views.CrearProductCerveza">
+    tools:context=".Views.ADMIN.VISTAS.CrearProductCerveza">
 
     <ScrollView
         android:layout_width="370dp"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="textCapCharacters|textAutoCorrect"
                     android:textColor="@color/design_default_color_on_primary" />
             </LinearLayout>
 
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:textColor="@color/design_default_color_on_primary" />
             </LinearLayout>
 

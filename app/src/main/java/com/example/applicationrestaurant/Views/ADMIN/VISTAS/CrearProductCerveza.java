@@ -1,4 +1,4 @@
-package com.example.applicationrestaurant.Views;
+package com.example.applicationrestaurant.Views.ADMIN.VISTAS;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
@@ -17,7 +17,7 @@ import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Cervezas;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.CervezaService;
-import com.example.applicationrestaurant.Views.Products.ListCervezas;
+import com.example.applicationrestaurant.Views.ADMIN.Products.ListCervezas;
 
 public class CrearProductCerveza extends AppCompatActivity {
     private EditText editNameFormCreateCerveza,editContentAlcoholFormCreateCerveza,editPriceFormCreateCerveza;
@@ -83,24 +83,6 @@ public class CrearProductCerveza extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //Aqui se enlaza el menu que se creo
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()){
-            case R.id.Menu:
-                intent = new Intent(getApplicationContext(), InicioMenu.class);
-                startActivity(intent);
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
     public void clean(){
         editNameFormCreateCerveza.setText("");

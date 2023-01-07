@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_menu"
+        android:title="Menú"
+        android:icon="@drawable/comida"/>
+
+    <item android:id="@+id/nav_coctel"
+        android:title="Coctel"
+        android:icon="@drawable/coctel"/>
+
+    <item android:id="@+id/nav_cerveza"
+        android:title="Cerveza"
+        android:icon="@drawable/cerveza"/>
+
+    <item android:id="@+id/nav_map"
+        android:title="Info"
+        android:icon="@drawable/mapa"/>
+
+    <item android:id="@+id/nav_login"
+        android:title="Admin"
+        android:icon="@drawable/login"/>
+
+</menu>

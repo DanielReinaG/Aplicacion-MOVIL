@@ -1,4 +1,4 @@
-package com.example.applicationrestaurant.Views;
+package com.example.applicationrestaurant.Views.USER;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,28 +12,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.applicationrestaurant.R;
+import com.example.applicationrestaurant.Views.USER.Comida;
 
 public class Inicio extends AppCompatActivity{
-    private TextView textHome;
     private ImageView logoImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        logoImage = (ImageView) findViewById(R.id.logoImage);
-        textHome = (TextView) findViewById(R.id.textHome);
+        logoImage = findViewById(R.id.logoImage);
         rotarImagen(logoImage);
 
         final int DURACION = 2700;
 
         new Handler().postDelayed(()->{
             //CODIGO QUE SE EJECUTARA
-            Intent intent = new Intent(getApplicationContext(), InicioMenu.class);
+            Intent intent = new Intent(getApplicationContext(), Comida.class);
             startActivity(intent);
             finish();
         },DURACION);
-
     }
     //ANIMACION DE HACER ROTAR LA IMAGEN
     private void rotarImagen(View view){

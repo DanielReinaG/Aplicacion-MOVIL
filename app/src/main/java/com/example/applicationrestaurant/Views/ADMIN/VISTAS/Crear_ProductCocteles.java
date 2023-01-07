@@ -1,4 +1,4 @@
-package com.example.applicationrestaurant.Views;
+package com.example.applicationrestaurant.Views.ADMIN.VISTAS;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -23,7 +23,7 @@ import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Cocteles;
 import com.example.applicationrestaurant.R;
 import com.example.applicationrestaurant.Servicios.CoctelesService;
-import com.example.applicationrestaurant.Views.Products.ListCocteles;
+import com.example.applicationrestaurant.Views.ADMIN.Products.ListCocteles;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -117,6 +117,8 @@ public class Crear_ProductCocteles extends AppCompatActivity {
                 //SI VIENE POR EDIT ACTUALIZA EL PRODUCTO
                 if(intentIN.getBooleanExtra("editC", false)) {
                     String id = intentIN.getStringExtra("id");
+                    String image = intentIN.getStringExtra("image");
+                    cocteles.setImage(image);
                     cocteles.setId(id);
                     dbFirebase.updateDataCocteles(cocteles);
                     //SINO, CREA EL PRODUCTO EN LA BD
@@ -146,25 +148,7 @@ public class Crear_ProductCocteles extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //Aqui se enlaza el menu que se creo
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()){
-
-            case R.id.Menu:
-                intent = new Intent(getApplicationContext(), InicioMenu.class);
-                startActivity(intent);
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
     public void clean(){
         editNameFormCreate.setText("");
         editDescriptFormCreate.setText("");

@@ -11,14 +11,20 @@ import android.widget.TextView;
 import com.example.applicationrestaurant.DB.DBFirebase;
 import com.example.applicationrestaurant.Entities.Cervezas;
 import com.example.applicationrestaurant.R;
-import com.example.applicationrestaurant.Views.CrearProductCerveza;
-import com.example.applicationrestaurant.Views.Products.ListCervezas;
+import com.example.applicationrestaurant.Views.ADMIN.VISTAS.CrearProductCerveza;
+import com.example.applicationrestaurant.Views.ADMIN.Products.ListCervezas;
 
 import java.util.ArrayList;
 
 public class CervezaAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<Cervezas> arrayCervezas;
+
+
+    public void setFilteredList(ArrayList<Cervezas> filteredList) {
+        this.arrayCervezas = filteredList;
+        notifyDataSetChanged();
+    }
 
     public CervezaAdapter(Context context, ArrayList<Cervezas> arrayCervezas) {
         this.context = context;
@@ -82,4 +88,5 @@ public class CervezaAdapter extends BaseAdapter {
         });
         return view;
     }
+
 }
